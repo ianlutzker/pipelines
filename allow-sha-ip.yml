@@ -1,0 +1,22 @@
+- task: AzureCLI@2
+displayName: Add agent IP in ACR
+inputs:
+  azureSubscription: $(azureSubscription)
+  scriptType: bash
+  scriptLocation: inlineScript
+  inlineScript: |
+    agentIP=$(curl -s ipinfo.io | jq -r ".ip")
+    echo $agentIP
+    az acr network-rule add -n $(acrname) --ip-address $agentIP
+
+- task: AzureCLI@2
+displayName: Remove agent IP from ACR
+condition: always()
+inputs:
+  azureSubscription: $(azureSubscription)
+  scriptType: bash
+  scriptLocation: inlineScript
+  inlineScript: |
+    agentIP=$(curl -s ipinfo.io | jq -r ".ip")
+    echo $agentIP
+    az acr network-rule remove -n $(acrname) --ip-address $agentIP
