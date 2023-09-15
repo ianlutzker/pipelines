@@ -19,8 +19,8 @@ jobs:
   pool: 
     vmImage: ${{ parameters.vmImage }}
   variables:
-  stringWithPeriods: 'subdomain.domain.com'
-  stringReplace: ${{ replace(variables['stringWithPeriods'], '.', '-') }}
+    stringWithPeriods: 'subdomain.domain.com'
+    stringReplace: ${{ replace(variables['stringWithPeriods'], '.', '-') }}
   
   steps:
   - checkout: none
