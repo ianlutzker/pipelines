@@ -1,0 +1,27 @@
+# Using replace expression in Azure Pipelines
+# Docs: https://learn.microsoft.com/en-us/azure/devops/pipelines/process/expressions?view=azure-devops
+
+trigger: none
+
+parameters:
+- name: vmImage
+  displayName: Pool Image
+  type: string
+  default: ubuntu-latest
+  values:
+  - windows-latest
+  - ubuntu-latest
+  - macOS-latest
+
+jobs:
+- job: Job1
+  displayName: Replace Expression
+  pool: 
+    vmImage: ${{ parameters.vmImage }}
+  variables:
+  stringWithPeriods: 'subdomain.domain.com'
+  stringReplace: ${{ replace(variables['stringWithPeriods'], '.', '-') }}
+  
+  steps:
+  - checkout: none
+  - bash: echo -e "Using replace expression in Azure Pipelines\nRun":" $(Build.BuildNumber)\nImage":" ${{ parameters.vmImage }}\nString with periods":" $(stringWithPeriods)\nString with hyphens":" $(stringReplace)"
