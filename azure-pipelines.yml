@@ -1,0 +1,11 @@
+steps:
+
+- task: Kubernetes@1
+  inputs:
+    connectionType: 'Kubernetes Service Connection'
+    kubernetesServiceEndpoint: 'direct-halibut-aks-azdo-1699037690330'
+    namespace: 'azdo'
+    command: 'run'
+    arguments: 'nginx'
+    secretType: 'dockerRegistry'
+    containerRegistryType: 'Azure Container Registry'
