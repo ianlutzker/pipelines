@@ -3,7 +3,7 @@ pool:
 
 parameters:
   - name: port
-    default: ''
+    default: '80'
 
 steps:
 
