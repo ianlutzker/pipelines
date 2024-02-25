@@ -1,6 +1,10 @@
 pool:
   name: 'Azure Pipelines'
 
+parameters:
+  - name: port
+    default: ''
+
 steps:
 
 - checkout: none
@@ -11,6 +15,6 @@ steps:
     kubernetesServiceEndpoint: 'absolute-donkey-aks-azdo-1708894828939'
     namespace: 'azdo'
     command: 'run'
-    arguments: 'bboard --image=ianlutzker/node-bulletin-board --port=80'
+    arguments: 'bboard --image=ianlutzker/node-bulletin-board --port=${{ parameters.port }}'
     # secretType: 'dockerRegistry'
     # containerRegistryType: 'Azure Container Registry'
