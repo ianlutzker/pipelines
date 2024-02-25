@@ -7,8 +7,8 @@ steps:
   inputs:
     connectionType: 'Kubernetes Service Connection'
     kubernetesServiceEndpoint: 'absolute-donkey-aks-azdo-1708894828939'
-    namespace: 'ian'
+    namespace: 'azdo'
     command: 'run'
-    arguments: 'bboard --namespace=ian --image=ianlutzker/node-bulletin-board'
+    arguments: 'bboard --image=ianlutzker/node-bulletin-board'
     # secretType: 'dockerRegistry'
     # containerRegistryType: 'Azure Container Registry'
