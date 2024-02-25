@@ -6,7 +6,7 @@ steps:
 - task: Kubernetes@1
   inputs:
     connectionType: 'Kubernetes Service Connection'
-    kubernetesServiceEndpoint: 'direct-halibut-aks-azdo-1699037690330'
+    kubernetesServiceEndpoint: 'absolute-donkey-aks-azdo-1708894828939'
     namespace: 'azdo'
     command: 'run'
     arguments: 'nginx'
